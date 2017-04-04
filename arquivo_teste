@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <locale.h>
+#include <conio.h>
+
+int main(){
+    setlocale(LC_ALL,"portuguese");
+    int nvlUm[6];
+    int nvlDois[9];
+    int nvlTres[11];
+    int i=0;
+    int controleNivel = 0;
+    int jogador[11];
+    char aux; //receber o dado do usuario
+    char continuar = 's'; //'n' termina o jogo e 's' continua
+    srand( (unsigned)time(NULL) );
+
+    printf("||--------------------------------------||\n");
+    printf("||                                      ||\n");
+    printf("||        MEMORIZE A SEQUENCIA!         ||\n");
+    printf("||                                      ||\n");
+    printf("||--------------------------------------||\n\n");
+
+    printf("||--------------------------------------||\n");
+    printf("||                                      ||\n");
+    printf("||        Instruções do Jogo.           ||\n");
+    printf("||                                      ||\n");
+    printf("||  > O jogo é conposto por TRÊS Fases. ||\n");
+    printf("||  > Memorize a sequência de números.  ||\n");
+    printf("||  > Você tem apenas uma tentativa, se ||\n");
+    printf("||  > Acertar passa para próxima fase.  ||\n");
+    printf("||                                      ||\n");
+    printf("||--------------------------------------||\n\n");
+    system("pause");
+
+
+    while(continuar == 's'){
+        switch(controleNivel){
+            case 0:
+                system("cls||clear");
+                printf("Nível 1!!!\n\n");
+
+                for(i=0;i<5;i++){
+                    nvlUm[i] = rand()%10;
+                    printf("%d ",nvlUm[i]);
+                }
+                Sleep(3000);
+                system("cls||clear");
+
+                printf("Digite a Sequência:\n");
+                for(i=0; i<5; i++){
+                    //scanf("%d",&jogador[i]);
+                    aux = _getch();
+                    jogador[i] = atoi(&aux);
+                    printf("%d ",jogador[i]);
+
+                    if(jogador[i] != nvlUm[i]){
+                        printf("\n\nGAME OVER\n\n");
+                        printf("A Sequência correta é: ");
+                        for(i=0;i<5;i++){
+                            printf("%d ",nvlUm[i]);
+                        }
+                        printf("\n");
+                        continuar = 'n';
+                        break;
+                    }
+                    else if(i == 4){
+                        printf("\n\nParabens você passou para a próxima FASE!\n\n");
+                        controleNivel++;
+                    }
+                }
+                break;
+            case 1:
+                system("cls||clear");
+                printf("Nível 2!!!\n\n");
+
+                for(i=0; i<8; i++){
+                    nvlDois[i] = rand()%10;
+                    printf("%d ",nvlDois[i]);
+                }
+
+                Sleep(3000);
+                system("cls||clear");
+
+                printf("Digite a Sequência:\n");
+                for(i=0; i<8 ;i++){
+                    //scanf("%d",&jogador[i]);
+                    aux = _getch();
+                    jogador[i] = atoi(&aux);
+                    printf("%d ",jogador[i]);
+
+                    if(jogador[i] != nvlDois[i]){
+                        printf("\n\nGAME OVER\n\n");
+                        printf("A Sequência correta é: ");
+                        for(i=0;i<8;i++){
+                            printf("%d ",nvlDois[i]);
+                        }
+                        printf("\n");
+                        continuar = 'n';
+                        break;
+                    }
+                    else if(i == 7){
+                        printf("\n\nParabens você passou para a próxima FASE!\n\n");
+                        controleNivel++;
+                    }
+                }
+                break;
+            case 2:
+                system("cls||clear");
+                printf("Nível 3!!!\n\n");
+
+                for(i=0; i<10; i++){
+                    nvlTres[i] = rand()%10;
+                    printf("%d ",nvlTres[i]);
+                }
+
+                Sleep(3000);
+                system("cls||clear");
+
+                printf("Digite a Sequência:\n");
+                for(i=0; i<10 ;i++){
+                    //scanf("%d",&jogador[i]);
+                    aux = _getch();
+                    jogador[i] = atoi(&aux);
+                    printf("%d ",jogador[i]);
+
+                    if(jogador[i] != nvlTres[i]){
+                        printf("\n\nGAME OVER\n\n");
+                        printf("A Sequência correta é: ");
+                        for(i=0;i<10;i++){
+                            printf("%d ",nvlTres[i]);
+                        }
+                        printf("\n");
+                        continuar = 'n';
+                        break;
+                    }
+                    else if(i == 9){
+                        printf("\n\nParabens você GANHOU o jogo!!!\n\n");
+                        controleNivel++;
+                    }
+                }
+                break;
+            }
+            if(continuar == 's' && controleNivel == 3){
+                printf("Quer jogar novamente?\n[s]-sim\n[n]-não\n");
+                continuar = _getch();
+                controleNivel = 0;
+            }
+            else if(continuar == 'n'){
+                printf("Quer tentar novamente?\n[s]-sim\n[n]-não\n");
+                continuar = _getch();
+                printf("%c\n",continuar);
+            }
+        system("pause");
+        }
+}

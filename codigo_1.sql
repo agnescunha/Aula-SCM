@@ -1,9 +1,3 @@
-create database distribuidora;
-
-
-
-
-
 CREATE TABLE Cidade(
 
 	Ccod integer NOT NULL,

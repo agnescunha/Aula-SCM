@@ -131,28 +131,20 @@ INSERT INTO Fornecimento VALUES ('001', '002', '114', '6');
 INSERT INTO Fornecimento VALUES ('004', '001', '112', '15');
 
 
-
-'Questão 1'
-
 UPDATE Cidade
 
 SET Uf = 'RS'
 
-WHERE Uf = 'PR';        
+WHERE Uf = 'PR';
 
 
 
-'Questão 2'
-
-SELECT Fnome as nome_fornecedor 'alias - apelido para variável'
+SELECT Fnome as nome_fornecedor
 
 FROM Fornecedor
 
-WHERE _status = 1 order by Fnome;  'order by - coloca em ordem crescente, e desc no final coloca em ordem decrescente' 
+WHERE _status = 1 order by Fnome;
 
-
-
-'Questão 3'
 
 SELECT Fnome as nome_fornecedor
 
@@ -161,18 +153,12 @@ FROM Fornecedor, Cidade, Fornecimento
 WHERE Fornecedor.Ccod = Cidade.Ccod AND Fornecedor.Fcod = Fornecimento.Fcod AND Pcod = '001';
 
 
-
-'Questão 4'
-
 DELETE FROM Fornecedor
 
 WHERE _status = 0;
 
 SELECT * FROM Fornecedor;
 
-
-
-'Questão 5'
 
 SELECT Fnome as nome_fornecedor, Cnome as Cidade, Uf as UF
 
@@ -182,8 +168,6 @@ WHERE  Fornecedor.Ccod = Cidade.Ccod AND Uf = 'SC';
 
 
 
-'Questão 6'
-
 SELECT Jnome as nome_projeto
 
 FROM Projeto, Fornecimento
@@ -191,8 +175,6 @@ FROM Projeto, Fornecimento
 WHERE Projeto.PRcod = Fornecimento.PRcod AND Fornecimento.Pcod = '001';
 
 
-
-'Questão 7'
 
 UPDATE Peca
 
@@ -204,15 +186,11 @@ SELECT * FROM Peca;
 
 
 
-'Questão 8'
-
 SELECT DISTINCT Cor
 
 FROM Peca;
 
 
-
-'Questão 9.a'
 
 SELECT Pcod as Codigo_peça, Pnome as Nome_peça, Cor
 
@@ -221,8 +199,6 @@ FROM Peca
 WHERE Cor = 'azul';
 
 
-
-'Questão 9.b'
 
 UPDATE Peca
 
@@ -233,17 +209,9 @@ WHERE Cor = 'azul';
 SELECT * FROM Peca;
 
 
-
-'Questão 10'
-
 SELECT Fornecimento.Pcod as Codigo_Peça, Pnome as Nome_Peça
 
 FROM Fornecimento, Peca
 
 WHERE Quantidade <10 AND Fornecimento.Pcod = Peca.Pcod;
-
-
-
-
-
 
